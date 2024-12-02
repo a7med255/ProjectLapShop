@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectLapShop", "ProjectLapShop\ProjectLapShop.csproj", "{80A01854-BDC8-4CC3-B8C8-AF9EBAAC5F1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domains", "Domains\Domains.csproj", "{F65ECD52-5D29-4DA5-9C2F-A8F093C77AD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bl", "Bl\Bl.csproj", "{43D3021F-C116-4EC9-AD31-47292D18C9DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80A01854-BDC8-4CC3-B8C8-AF9EBAAC5F1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80A01854-BDC8-4CC3-B8C8-AF9EBAAC5F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80A01854-BDC8-4CC3-B8C8-AF9EBAAC5F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80A01854-BDC8-4CC3-B8C8-AF9EBAAC5F1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F65ECD52-5D29-4DA5-9C2F-A8F093C77AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F65ECD52-5D29-4DA5-9C2F-A8F093C77AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F65ECD52-5D29-4DA5-9C2F-A8F093C77AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F65ECD52-5D29-4DA5-9C2F-A8F093C77AD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43D3021F-C116-4EC9-AD31-47292D18C9DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43D3021F-C116-4EC9-AD31-47292D18C9DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43D3021F-C116-4EC9-AD31-47292D18C9DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43D3021F-C116-4EC9-AD31-47292D18C9DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2AF6A9BB-7613-44BB-ADCB-BE2E8CA3870A}
+	EndGlobalSection
+EndGlobal
