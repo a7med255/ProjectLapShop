@@ -18,7 +18,8 @@ public partial class LapShopContext : IdentityDbContext<ApplicationUser>
     {
     }
 
-    
+    public virtual DbSet<WishlistItem> TbWishlistItems { get; set; }
+
     public virtual DbSet<TbBusinessInfo> TbBusinessInfos { get; set; }
 
     public virtual DbSet<TbCashTransacion> TbCashTransacions { get; set; }
@@ -49,6 +50,7 @@ public partial class LapShopContext : IdentityDbContext<ApplicationUser>
 
     public virtual DbSet<TbSupplier> TbSuppliers { get; set; }
     public virtual DbSet<TbSettings> TbSettings { get; set; }
+    public virtual DbSet<TbPages> TbPages { get; set; } = null!;
 
 
     public virtual DbSet<VwItem> VwItems { get; set; }
@@ -112,6 +114,17 @@ public partial class LapShopContext : IdentityDbContext<ApplicationUser>
             entity.HasKey(e => e.CustomerId);
 
             entity.Property(e => e.CustomerName).HasMaxLength(100);
+        });
+        modelBuilder.Entity<WishlistItem>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+
+        });
+        modelBuilder.Entity<TbPages>(entity =>
+        {
+            entity.HasKey(e => e.PageId);
+
+            entity.Property(e => e.Title).HasMaxLength(500);
         });
 
         modelBuilder.Entity<TbItem>(entity =>

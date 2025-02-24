@@ -1,0 +1,25 @@
+﻿@model List<WishlistItem>
+
+<h1>Your Wishlist</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Date Added</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.DateAdded</td>
+                <td>
+                    <a asp-action="Remove" asp-route-productId="@item.ProductId">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

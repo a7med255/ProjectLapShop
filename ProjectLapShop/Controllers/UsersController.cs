@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using ProjectLapShop.Models;
+using ProjectLapShop.Utilities;
 
 namespace ProjectLapShop.Controllers
 {
@@ -8,18 +10,21 @@ namespace ProjectLapShop.Controllers
     {
         UserManager<ApplicationUser> _userManager;
         SignInManager<ApplicationUser> _signInManager;
-        public UsersController(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager)
+        IEmailSender _emailSender;
+
+        public UsersController(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager, IEmailSender emailSender )
         {
             _userManager=userManager;
             _signInManager=signInManager;
+            _emailSender=emailSender;
         }
-        public IActionResult Index()
-        {
-            return View(new UserModel());
-        }   
         public IActionResult Login(string ReturnUrl)
         {
-            return View();
+            UserModel model = new UserModel()
+            {
+                ReturnUrl = ReturnUrl
+            };
+            return View(model);
         }
         public async Task<IActionResult> LogOut()
         {
@@ -52,7 +57,7 @@ namespace ProjectLapShop.Controllers
                     await _userManager.AddToRoleAsync(myUser, "Customer");
 
                     if (loginResult.Succeeded)
-                        return Redirect("~/Order/OrderSuccess");
+                        return Redirect("~/Users/Login");
                 }
                 else
                 {
@@ -65,6 +70,7 @@ namespace ProjectLapShop.Controllers
                 
             return View(new UserModel());
         }
+
         [HttpPost]
         public async Task<IActionResult> Login(UserModel model,string ReturnUrl)
         {
@@ -90,9 +96,118 @@ namespace ProjectLapShop.Controllers
             }
             return View(new UserModel());
         }
+
+        public IActionResult ConfirmEmail()
+        {
+            return View();
+        }
+        // Step 2: Handle email submission and send code
+        [HttpPost]
+        public async Task<IActionResult> ConfirmEmail(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Email not found.");
+                return View();
+            }
+
+            // Generate 6-digit code
+            var confirmationCode = new Random().Next(100000, 999999).ToString();
+
+            // Store the code and expiration time in TempData (or database for production)
+            TempData["Code"] = confirmationCode;
+            TempData["Email"] = email;
+            TempData["CodeExpiry"] = DateTime.UtcNow.AddMinutes(3);
+
+            // Send email
+            await _emailSender.SendEmailAsync(email, "Password Reset Code",
+                $"Your password reset code is: {confirmationCode}");
+
+            return RedirectToAction("ConfirmCode");
+        }
+
+        // Step 3: Show code input form
+        public IActionResult ConfirmCode()
+        {
+            return View();
+        }
+        // Step 4: Handle code verification
+        [HttpPost]
+        public IActionResult ConfirmCode(string code)
+        {
+            var storedCode = TempData.Peek("Code")?.ToString(); // Use Peek to retain TempData for subsequent requests
+            var email = TempData.Peek("Email")?.ToString();
+            var expiry = (DateTime?)TempData.Peek("CodeExpiry");
+
+            if (storedCode == null || expiry == null || email == null || DateTime.UtcNow > expiry)
+            {
+                ModelState.AddModelError("", "Code has expired or is invalid.");
+                return View();
+            }
+
+            if (code != storedCode)
+            {
+                ModelState.AddModelError("", "Invalid code.");
+                return View();
+            }
+
+            // Store email for password reset
+            TempData["Email"] = email;
+            return RedirectToAction("ResetPassword");
+        }
+
+
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
+        // Step 6: Handle password update
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(string newPassword)
+        {
+            var email = TempData["Email"]?.ToString();
+            if (email == null)
+            {
+                return BadRequest("Invalid request.");
+            }
+
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var result = await _userManager.ResetPasswordAsync(user, resetToken, newPassword);
+                
+            if (result.Succeeded)
+            {
+                return RedirectToAction("ResetPasswordSuccess");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+
+            return View();
+        }
+
+
+        public IActionResult ResetPasswordSuccess()
+        {
+            return View();
+        }
         public IActionResult AccessDenied()
         {
             return View();
         }
     }
 }
+//admin
+//m@gmail.com
+//ahmedH@123->pass
+//customer
+//mans.gmail.com
+//ahmed@H123->pass

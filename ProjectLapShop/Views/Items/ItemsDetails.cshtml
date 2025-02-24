@@ -14,7 +14,7 @@
             <div class="col-sm-6">
                 <nav aria-label="breadcrumb" class="theme-breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">product</li>
                     </ol>
                 </nav>
@@ -30,44 +30,40 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="product-slick">
-                        @foreach (var item in Model.lstItemImages) {
+                        @foreach (var item in Model.lstItemImages)
+                        {
                             <div>
                                 <img src="~/Uploads/Items/@item.ImageName" alt=""
                                 class="img-fluid blur-up lazyload image_zoom_cls-0">
                             </div>
                         }
+
                     </div>
                     <div class="row">
                         <div class="col-12 p-0">
+
                             <div class="slider-nav">
-                        @foreach (var item in Model.lstItemImages) {
-                                <div>
-                                        <img src="~/Uploads/Items/@item.ImageName" alt=""
-                                         class="img-fluid blur-up lazyload">
-                                </div>
-                        }
+                                @foreach (var item in Model.lstItemImages)
+                                {
+
+                                    <div>
+                                            <img src="~/Uploads/Items/@item.ImageName" alt=""
+                                             class="img-fluid blur-up lazyload">
+                                    </div>
+                                }
+
                             </div>
+
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 rtl-text">
                     <div class="product-right">
                         <h2 class="mb-0">@Model.VwItem.ItemName</h2>
-                        <h5 class="mb-2">by <a href="#">zara</a></h5>
-                        <h4><del>$459.00</del><span>55% off</span></h4>
+                        <h5 class="mb-2">by <a href="#">@Model.VwItem.CategoryName</a></h5>
+                        <h4><span>55% off</span></h4>
                         <h3>$@Model.VwItem.SalesPrice</h3>
-                        <ul class="color-variant">
-                            <li class="bg-light0"></li>
-                            <li class="bg-light1"></li>
-                            <li class="bg-light2"></li>
-                        </ul>
                         <div class="product-description border-product">
-                            <h6 class="product-title size-text">
-                                select size <span>
-                                    <a href="" data-toggle="modal"
-                                       data-target="#sizemodal">size chart</a>
-                                </span>
-                            </h6>
                             <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -86,78 +82,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="size-box">
-                                <ul>
-                                    <li class="active"><a href="#">s</a></li>
-                                    <li><a href="#">m</a></li>
-                                    <li><a href="#">l</a></li>
-                                    <li><a href="#">xl</a></li>
-                                </ul>
-                            </div>
-                            <h6 class="product-title">quantity</h6>
-                            <div class="qty-box">
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <button type="button"
-                                                class="btn quantity-left-minus" data-type="minus" data-field="">
-                                            <i class="ti-angle-left"></i>
-                                        </button>
-                                    </span>
-                                    <input type="text" name="quantity" class="form-control input-number" value="1">
-                                    <span class="input-group-prepend">
-                                        <button type="button"
-                                                class="btn quantity-right-plus" data-type="plus" data-field="">
-                                            <i class="ti-angle-right"></i>
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
                         </div>
                         <div class="product-buttons">
-                            <a href="#" data-toggle="modal" data-target="#addtocart"
-                               class="btn btn-solid">add to cart</a> <a href="#" class="btn btn-solid">buy now</a>
+                            <a asp-controller="Order" asp-action="AddToCart" asp-route-itemId="@Model.VwItem.ItemId"
+                               class="btn btn-solid">add to cart</a> <a asp-controller="Order" asp-action="AddToCart" asp-route-itemId="@Model.VwItem.ItemId" class="btn btn-solid">buy now</a>
                         </div>
                         <div class="border-product">
                             <h6 class="product-title">product details</h6>
                             <p>
-                                Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
-                                doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore
-                                veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam
-                                voluptatem,
+                                @Model.VwItem.ItemName By @Model.VwItem.CategoryName @Model.VwItem.ItemTypeName @Model.VwItem.Gpu  @Model.VwItem.HardDisk@Model.VwItem.Processor @Model.VwItem.RamSize @Model.VwItem.ScreenReslution @Model.VwItem.ScreenSize @Model.VwItem.Weight
                             </p>
-                        </div>
-                        <div class="border-product">
-                            <h6 class="product-title">share it</h6>
-                            <div class="product-icon">
-                                <ul class="product-social">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                </ul>
-                                <form class="d-inline-block">
-                                    <button class="wishlist-btn">
-                                        <i class="fa fa-heart"></i><span class="title-font">Add To WishList</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="border-product">
-                            <h6 class="product-title">Time Reminder</h6>
-                            <div class="timer">
-                                <p id="demo">
-                                    <span>
-                                        25 <span class="padding-l">:</span> <span class="timer-cal">Days</span>
-                                    </span><span>
-                                        22 <span class="padding-l">:</span> <span class="timer-cal">Hrs</span>
-                                    </span><span>
-                                        13 <span class="padding-l">:</span> <span class="timer-cal">Min</span>
-                                    </span><span>
-                                        57 <span class="timer-cal">Sec</span>
-                                    </span>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -197,20 +131,7 @@
                     <div class="tab-pane fade show active" id="top-home" role="tabpanel"
                          aria-labelledby="top-home-tab">
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown
-                            printer took a galley of type and scrambled it to make a type specimen book. It has
-                            survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged. It was popularised in the 1960s with the release of
-                            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                            publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum
-                            is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only
-                            five centuries, but also the leap into electronic typesetting, remaining essentially
-                            unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                            containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                            Aldus PageMaker including versions of Lorem Ipsum.
+                            @Model.VwItem.ItemName By @Model.VwItem.CategoryName @Model.VwItem.ItemTypeName @Model.VwItem.Gpu  @Model.VwItem.HardDisk@Model.VwItem.Processor @Model.VwItem.RamSize @Model.VwItem.ScreenReslution @Model.VwItem.ScreenSize @Model.VwItem.Weight
                         </p>
                     </div>
                     <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
@@ -227,16 +148,24 @@
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td>Febric</td>
-                                        <td>Chiffon</td>
+                                        <td>Processor</td>
+                                        <td>@Model.VwItem.Processor</td>
                                     </tr>
                                     <tr>
-                                        <td>Color</td>
-                                        <td>Red</td>
+                                        <td>Ram Size</td>
+                                        <td>@Model.VwItem.RamSize</td>
                                     </tr>
                                     <tr>
-                                        <td>Material</td>
-                                        <td>Crepe printed</td>
+                                        <td>Hard Disk</td>
+                                        <td>@Model.VwItem.HardDisk</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Screen Resolution</td>
+                                        <td>@Model.VwItem.ScreenReslution</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Screen Size</td>
+                                        <td>@Model.VwItem.ScreenSize</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -319,14 +248,14 @@
                     <div class="product-box">
                     <div class="img-wrapper">
                         <div class="front">
-                            <a href="#">
-                                <img src="../assets/images/pro3/33.jpg"
+                                <a asp-controller ="Items" asp-action="ItemsDetails" asp-route-id="@item.ItemId">
+                                <img src="~/Uploads/Items/@item.ImageName"
                                      class="img-fluid blur-up lazyload bg-img" alt="">
-                            </a>
+                            </a>    
                         </div>
                         <div class="back">
-                            <a href="#">
-                                <img src="../assets/images/pro3/34.jpg"
+                                <a asp-controller="Items" asp-action="ItemsDetails" asp-route-id="@item.ItemId">
+                                    <img src="~/Uploads/Items/@item.ImageName"
                                      class="img-fluid blur-up lazyload bg-img" alt="">
                             </a>
                         </div>

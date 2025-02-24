@@ -1,0 +1,51 @@
+﻿<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>ConfirmEmail</h2>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Users/Login">Back</a></li>
+                        <li class="breadcrumb-item active">Confirm Email</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb End -->
+<!--section start-->
+<section class="login-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Confirm Email</h3>
+                <div class="theme-card">
+                    <form asp-action="ConfirmEmail" method="post"
+                          class="theme-form">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Email" required="">
+                        </div>
+                        <button type="submit" class="btn btn-solid">ConfirmEmail</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 right-login">
+                <h3>Account</h3>
+                <div class="theme-card authentication-right">
+                    <h6 class="title-font">Login</h6>
+                    <p>
+                       Do you want going to the Login Page?
+                    </p><a href="/Users/Login"
+                           class="btn btn-solid">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section ends-->

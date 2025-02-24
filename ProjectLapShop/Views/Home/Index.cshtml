@@ -96,7 +96,7 @@
                                     <a asp-controller="Order" asp-action="AddToCart" asp-route-itemId="@item.ItemId">
                                         <i class="ti-shopping-cart"></i>
                                     </a>
-                                    <a href="#" title="Add to Wishlist">
+                                    <a asp-controller="Wishlist" asp-action="Add" asp-route-productId="@item.ItemId" title="Add to Wishlist">
                                         <i class="ti-heart" aria-hidden="true"></i>
                                     </a>
                                     <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View">
@@ -171,13 +171,13 @@
                                         <div class="img-wrapper">
                                             <div class="front">
                                                 <a asp-controller="Items" asp-action="ItemsDetails" asp-route-id="@item.ItemId">
-                                                    <img src="~/Fontend/images/pro3/27.jpg"
+                                                    <img src="~/Uploads/Items/@item.ImageName"
                                                     class="img-fluid blur-up lazyload bg-img" alt="">
                                                 </a>
                                             </div>
                                             <div class="back">
                                                 <a asp-controller="Items" asp-action="ItemsDetails" asp-route-id="@item.ItemId">
-                                                    <img src="~/Fontend/images/pro3/28.jpg"
+                                                    <img src="~/Uploads/Items/@item.ImageName"
                                                     class="img-fluid blur-up lazyload bg-img" alt="">
                                                 </a>
                                             </div>
@@ -224,13 +224,13 @@
                                             </div>
                                             <div class="front">
                                                 <a asp-controller="Items" asp-action="ItemsDetails" asp-route-id="@item.ItemId">
-                                                    <img src="~/Fontend/images/pro3/33.jpg"
+                                                    <img src="~/Uploads/Items/@item.ImageName"
                                                     class="img-fluid blur-up lazyload bg-img" alt="">
                                                 </a>
                                             </div>
                                             <div class="back">
                                                 <a asp-controller="Items" asp-action="ItemsDetails" asp-route-id="@item.ItemId">
-                                                    <img src="~/Fontend/images/pro3/34.jpg"
+                                                    <img src="~/Uploads/Items/@item.ImageName"
                                                     class="img-fluid blur-up lazyload bg-img" alt="">
                                                 </a>
                                             </div>
@@ -277,13 +277,13 @@
                                             </div>
                                             <div class="front">
                                                 <a asp-controller="Items" asp-action="ItemsDetails" asp-route-id="@item.ItemId">
-                                                    <img src="~/Fontend/images/pro3/33.jpg"
+                                                    <img src="~/Uploads/Items/@item.ImageName"
                                                     class="img-fluid blur-up lazyload bg-img" alt="">
                                                 </a>
                                             </div>
                                             <div class="back">
                                                 <a asp-controller="Items" asp-action="ItemsDetails" asp-route-id="@item.ItemId">
-                                                    <img src="~/Fontend/images/pro3/34.jpg"
+                                                    <img src="~/Uploads/Items/@item.ImageName"
                                                     class="img-fluid blur-up lazyload bg-img" alt="">
                                                 </a>
                                             </div>
@@ -394,217 +394,7 @@
     </section>
 </div>
 <!-- service layout  end -->
-<!-- blog section -->
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="title1 section-t-space">
-                <h4>Recent Story</h4>
-                <h2 class="title-inner1">from the blog</h2>
-            </div>
-        </div>
-    </div>
-</div>
-<section class="blog p-t-0 ratio2_3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="slide-3 no-arrow">
-                    <div class="col-md-12">
-                        <a href="#">
-                            <div class="classic-effect">
-                                <div>
-                                    <img src="~/Fontend/images/blog/1.jpg" class="img-fluid blur-up lazyload bg-img"
-                                         alt="">
-                                </div>
-                                <span></span>
-                            </div>
-                        </a>
-                        <div class="blog-details">
-                            <h4>25 January 2018</h4>
-                            <a href="#">
-                                <p>Lorem ipsum dolor sit consectetur adipiscing elit,</p>
-                            </a>
-                            <hr class="style1">
-                            <h6>by: John Dio , 2 Comment</h6>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <a href="#">
-                            <div class="classic-effect">
-                                <div>
-                                    <img src="~/Fontend/images/blog/2.jpg" class="img-fluid blur-up lazyload bg-img"
-                                         alt="">
-                                </div>
-                                <span></span>
-                            </div>
-                        </a>
-                        <div class="blog-details">
-                            <h4>25 January 2018</h4>
-                            <a href="#">
-                                <p>Lorem ipsum dolor sit consectetur adipiscing elit,</p>
-                            </a>
-                            <hr class="style1">
-                            <h6>by: John Dio , 2 Comment</h6>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <a href="#">
-                            <div class="classic-effect">
-                                <div>
-                                    <img src="~/Fontend/images/blog/3.jpg" class="img-fluid blur-up lazyload bg-img"
-                                         alt="">
-                                </div>
-                                <span></span>
-                            </div>
-                        </a>
-                        <div class="blog-details">
-                            <h4>25 January 2018</h4>
-                            <a href="#">
-                                <p>Lorem ipsum dolor sit consectetur adipiscing elit,</p>
-                            </a>
-                            <hr class="style1">
-                            <h6>by: John Dio , 2 Comment</h6>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <a href="#">
-                            <div class="classic-effect">
-                                <div>
-                                    <img src="~/Fontend/images/blog/4.jpg" class="img-fluid blur-up lazyload bg-img"
-                                         alt="">
-                                </div>
-                                <span></span>
-                            </div>
-                        </a>
-                        <div class="blog-details">
-                            <h4>25 January 2018</h4>
-                            <a href="#">
-                                <p>Lorem ipsum dolor sit consectetur adipiscing elit,</p>
-                            </a>
-                            <hr class="style1">
-                            <h6>by: John Dio , 2 Comment</h6>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <a href="#">
-                            <div class="classic-effect">
-                                <div>
-                                    <img src="~/Fontend/images/blog/5.jpg" class="img-fluid blur-up lazyload bg-img"
-                                         alt="">
-                                </div>
-                                <span></span>
-                            </div>
-                        </a>
-                        <div class="blog-details">
-                            <h4>25 January 2018</h4>
-                            <a href="#">
-                                <p>Lorem ipsum dolor sit consectetur adipiscing elit,</p>
-                            </a>
-                            <hr class="style1">
-                            <h6>by: John Dio , 2 Comment</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- blog section end -->
-<!-- instagram section -->
-<section class="instagram ratio_square">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 p-0">
-                <h2 class="title-borderless"># instagram</h2>
-                <div class="slide-7 no-arrow slick-instagram">
-                    <div>
-                        <a href="#">
-                            <div class="instagram-box">
-                                <img src="~/Fontend/images/slider/2.jpg" class="bg-img"
-                                     alt="Avatar" style="width:100%">
-                                <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <div class="instagram-box">
-                                <img src="~/Fontend/images/slider/3.jpg" class="bg-img"
-                                     alt="Avatar" style="width:100%">
-                                <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <div class="instagram-box">
-                                <img src="~/Fontend/images/slider/4.jpg" class="bg-img"
-                                     alt="Avatar" style="width:100%">
-                                <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <div class="instagram-box">
-                                <img src="~/Fontend/images/slider/9.jpg" class="bg-img"
-                                     alt="Avatar" style="width:100%">
-                                <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <div class="instagram-box">
-                                <img src="~/Fontend/images/slider/6.jpg" class="bg-img"
-                                     alt="Avatar" style="width:100%">
-                                <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <div class="instagram-box">
-                                <img src="~/Fontend/images/slider/7.jpg" class="bg-img"
-                                     alt="Avatar" style="width:100%">
-                                <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <div class="instagram-box">
-                                <img src="~/Fontend/images/slider/8.jpg" class="bg-img"
-                                     alt="Avatar" style="width:100%">
-                                <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <div class="instagram-box">
-                                <img src="~/Fontend/images/slider/9.jpg" class="bg-img"
-                                     alt="Avatar" style="width:100%">
-                                <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <div class="instagram-box">
-                                <img src="~/Fontend/images/slider/2.jpg" class="bg-img"
-                                     alt="Avatar" style="width:100%">
-                                <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- instagram section end -->
+
 <!--  logo section -->
 <section class="section-b-space">
     <div class="container">

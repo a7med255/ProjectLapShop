@@ -28,4 +28,4 @@ public partial class TbSalesInvoice
     public DateTime? UpdatedDate { get; set; }
 
     public virtual ICollection<TbSalesInvoiceItem> TbSalesInvoiceItems { get; set; } = new List<TbSalesInvoiceItem>();
-}
+}   

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjectLapShop.Bl;
 using ProjectLapShop.Models;
 
 
 namespace ProjectLapShop.Controllers
 {
+    [AllowAnonymous]
     public class ItemsController : Controller
     {
         public ItemsController(IItems items,IItemImages images)
@@ -14,15 +16,25 @@ namespace ProjectLapShop.Controllers
         }
         IItems ClsItems;
         IItemImages ClsItemImages;
-        public IActionResult ItemsDetails(int id)
+        public async Task<IActionResult> ItemsDetails(int id)
         {
-            var item=ClsItems.GetItemId(id);
-            VwDetails vwDetails = new VwDetails();
-            vwDetails.VwItem = item;
-            vwDetails.lstRecommendedItems = ClsItems.GetRecommendedItems(id).Take(12).ToList();
-            vwDetails.lstItemImages = ClsItemImages.GetById(id);
-            
+            var item =  ClsItems.GetItemId(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            var vwDetails = new VwDetails
+            {
+                VwItem = item,
+                lstRecommendedItems = ClsItems.GetRecommendedItems(id).Take(12).ToList(),
+                lstItemImages = ClsItemImages.GetById(id)
+            };
             return View(vwDetails);
         }
-    }
+        public IActionResult ItemList()
+        {
+            return View();
+        }
+        }
 }

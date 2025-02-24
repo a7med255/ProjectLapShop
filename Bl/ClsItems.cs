@@ -41,7 +41,7 @@ namespace ProjectLapShop.Bl
         {
             try
             {
-                var items = context.VwItems.Where(a=>(a.CategoryId== categoryid || categoryid == null || categoryid==0) && a.CurrentState==1).OrderByDescending(a=>a.CreatedDate).ToList();
+                var items = context.VwItems.Where(a=>(a.CategoryId== categoryid || categoryid == null || categoryid==0) && a.CurrentState==1).ToList();
                 return items;
             }
             catch

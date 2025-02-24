@@ -9,10 +9,10 @@
                     <h2>cart</h2>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6">  
                 <nav aria-label="breadcrumb" class="theme-breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
                         <li class="breadcrumb-item active">cart</li>
                     </ol>
                 </nav>
@@ -50,20 +50,20 @@
                                         <div class="col-xs-3">
                                             <div class="qty-box">
                                                 <div class="input-group">
-                                                    <input type="number" name="quantity" class="form-control input-number"
-                                                           value="@item.Qty" >
-                                                </div>  
+                                                    <input type="text" name="quantity" class="form-control input-number qty"
+                                                           value="1">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xs-3">
-                                            <h2 class="td-color">$@item.Price</h2>
+                                            <h2 class="td-color">$63.00</h2>
                                         </div>
                                         <div class="col-xs-3">
                                             <h2 class="td-color">
                                                 <a href="#" class="icon"><i class="ti-close"></i></a>
                                             </h2>
                                         </div>
-                                    </div>  
+                                    </div>
                                 </td>
                                 <td>
                                     <h2>$@item.Price</h2>
@@ -78,7 +78,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td><a href="#" class="icon"><i class="ti-close"></i></a></td>
+                                <td><a href="/Order/RemoveItem/@item.ItemId" class="icon"><i class="ti-close"></i></a></td>
                                 <td>
                                     <h2 data-id="@item.ItemId" class="td-color totalPrice">@item.Total</h2>
                                 </td>
@@ -91,7 +91,7 @@
                         <tr>
                             <td>total price :</td>
                             <td>
-                                <h2 id="OverAllTotal">$@Model.Total</h2>
+                                <h2 id="OverAllTotal">$@Model.TotalCard</h2>
                             </td>
                         </tr>
                     </tfoot>
@@ -99,8 +99,8 @@
             </div>
         </div>
         <div class="row cart-buttons">
-            <div class="col-6"><a href="#" class="btn btn-solid">continue shopping</a></div>
-            <div class="col-6"><a href="#" class="btn btn-solid">check out</a></div>
+            <div class="col-6"><a href="/Home/Index" class="btn btn-solid">continue shopping</a></div>
+            <div class="col-6"><a asp-action="Checkout" asp-controller="Order" class="btn btn-solid">check out</a></div>
         </div>
     </div>
 </section>

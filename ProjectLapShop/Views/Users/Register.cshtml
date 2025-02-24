@@ -8,11 +8,11 @@
                 <div class="page-title">
                     <h2>create account</h2>
                 </div>
-            </div>
+            </div>  
             <div class="col-sm-6">
                 <nav aria-label="breadcrumb" class="theme-breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">create account</li>
                     </ol>
                 </nav>
@@ -31,8 +31,7 @@
                     <form class="theme-form" method="post"
                           asp-controller="Users" asp-action="Register">
                         <div class="form-row">
-                            <div asp-validation-summary="All">
-                            </div>
+                            <input asp-for="ReturnUrl" type="hidden" />
                             <div class="col-md-6">
                                 <label for="email">First Name</label>
                                 <input asp-for="FirstName"

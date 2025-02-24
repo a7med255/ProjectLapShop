@@ -20,7 +20,7 @@ namespace ProjectLapShop.Controllers
         public IActionResult Index()
         {
            VwHome vwHome = new VwHome();
-            vwHome.lstAllItems=ClsItems.GetAllItemsData(null).Skip(20).Take(20).ToList();
+            vwHome.lstAllItems=ClsItems.GetAllItemsData(null).Take(20).ToList();
             vwHome.lstRecommenedItems = ClsItems.GetAllItemsData(null).Skip(60).Take(8).ToList();
             vwHome.lstNewItems = ClsItems.GetAllItemsData(null).Skip(90).Take(8).ToList();
             vwHome.lstFreeDelivary = ClsItems.GetAllItemsData(null).Skip(200).Take(8).ToList();

@@ -26,6 +26,7 @@
                         <div class="col-12">
                             <label for="exampleInputUsername1">@ResAdmin.lblCategoryName</label>
                             <select asp-items="@(new SelectList(ViewBag.lstCategories,"CategoryId","CategoryName"))" onchange="Search(this)">
+                                <option>select category</option>
                             </select>
                             
                         </div>  
